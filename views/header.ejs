@@ -1,0 +1,23 @@
+<a href='/'>Home</a>
+<a href='/index'>Index</a>
+| (ok)
+<a href='/logon'>logon</a>
+| (ok)
+<a href='/logoff'>logoff</a>
+
+| <font color=darkcyan> This is EJS Header </font>
+| 
+<% if(typeof session != "undefined" ){ %> 
+session.page_views= <%=session.page_views%>
+<% }else{ %>
+<font color=red> no session data to this page </font>
+<% }  %>
+
+// 
+<% if(typeof session != "undefined" ){ %> 
+    session.user_name= <%=session.user_name%>
+<% }else{ %>
+    <font color=red> no session data to this page </font>
+<% }  %>
+
+<hr>
