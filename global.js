@@ -67,7 +67,7 @@ app.use(session(session_options));
 /* สั่งให้ server ทำการรัน Web Server ด้วย port ที่เรากำหนด */
 function listen(){
     app.listen(port, function() {
-        console.log('Starting node.js on port ' + port);
+        console.log('Starting node.js on port ' + port + " at " + new Date().toISOString());
     });    
 }
 
