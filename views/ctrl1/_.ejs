@@ -5,4 +5,46 @@ _.ejs
 
 page view =  <%=session.page_views%>
 
+<br>
+<BR> <b>Network Interface Names </b>
+<% var names = []%>
+<% for (var name in arr_netif) { %>
+    <BR><%=name %>
+    <% names.push(name) %>
+    <% console.log(name) %>
+    //<% console.log(new Date().toISOString()) %>
+<% } %>
+
+<BR><br><b> IP For Each Interface </b>
+
+<% for(var idx in names) { %>  
+    <% var name = names[idx] %>
+    <% var inf = arr_netif[name] %>
+    <br>Interface Name : #<%=idx%>: <B><%=name%></b>
+    <% console.log("===== INF ==== ") %>
+    <% console.log(inf); %> 
+    <% var ips = inf %>
+    <ol>
+    <% for(var i = 0 ; i < ips.length ; i++ ){ %>
+        
+        <li>
+            <% if (ips[i].family=="IPv4"){ %> 
+                <b><%=ips[i].address%></b> 
+            <% }else{ %>
+                <font color=silver><%=ips[i].address%> </font>
+            <% }%>
+            
+            / <font color=silver><%=ips[i].netmask%></font>
+            / <%-ips[i].internal?"<font color=blue>INTERNAL</font>":"<font color=magenta>EXTERNAL</font>"%>
+            / <%-ips[i].family=="IPv4"?"<font color=red>IPv4</font>":"<font color=darkcyan>IPv6</font>"%>
+            / <font color=silver>mac=<%=ips[i].mac%></font>
+        </li>
+    <% } %>
+    </ol>
+
+    
+<% } //for names  %>
+
+
+
 
