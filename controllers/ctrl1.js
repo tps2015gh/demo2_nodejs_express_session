@@ -16,7 +16,15 @@ app.get('/', function (req, res) {
     //  res.send('<h1>Hello Node.js</h1>');  
     app.inc_page_views(req,res)
     console.log(req.session)
-    res.render('./ctrl1/_',{session:req.session})
+
+    // get IP Address
+    var os = require( 'os' );
+    var networkInterfaces = os.networkInterfaces( );
+    var arr_netif = networkInterfaces ;
+    console.log(arr_netif)
+
+    var params =     {arr_netif: arr_netif,session:req.session}
+    res.render('./ctrl1/_',params)
 
     //res.send("TEST 123");
 });
